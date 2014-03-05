@@ -7,6 +7,15 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 CSRF_ENABLE = True
 SECRET_KEY = 'you-will-never-guess'
 
+#mail server setting
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+
+# admin list
+ADMINS = ['admin@example.com']
+
 OPENID_PROVIDERS = [
     { 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
     { 'name': 'Yahoo', 'url': 'https://me.yahoo.com' },
