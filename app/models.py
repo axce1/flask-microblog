@@ -59,6 +59,16 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % (self.nickname)
 
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+            return self
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+            return self
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
