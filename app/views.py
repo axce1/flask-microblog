@@ -6,10 +6,13 @@ from app import app, db, lm, oid
 from .forms import LoginForm, EditForm, PostForm
 from .models import User, Post, ROLE_USER, ROLE_ADMIN
 
+#from config import POSTS_PER_PAGE
+POSTS_PER_PAGE = 3
+
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
 @login_required
-def index():
+def index(page=1):
     if g.user is not None:
         user = g.user
     else:
@@ -27,18 +30,8 @@ def index():
     #    flash('Anonimoys cant posting here!')
     #    return redirect(url_for('index'))
 
-    posts = g.user.followed_posts().all()
-
-#    posts = [
-        #{
-            #'author': { 'nickname': 'John' },
-            #'body': 'Beautiful day in Portland!'
-        #},
-        #{
-            #'author': { 'nickname': 'Susan' },
-            #'body': 'The Avengers movie was so cool!'
-        #},
-    #]
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+    #posts = g.user.followed_posts().all()
     return render_template('index.html',
             title = 'Home',
             form = form,

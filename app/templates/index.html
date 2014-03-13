@@ -22,10 +22,27 @@
         </tr>
     </table>
 </form>
-{{ posts}}
-{% for post in posts %}
-    <p>
-        {{post.author.nickname}} says: <b>{{post.body}}</b>
-    </p>
-{% endfor %}
+
+{% for post in posts.items %}
+    {{ post.body}}
+{% endfor%}
+
+<!--{% for post in posts.items %}-->
+    <!--{% include 'post.html' %}-->
+   <!--[> <p><]-->
+        <!--[>{{post.author.nickname}} says: <b>{{post.body}}</b><]-->
+    <!--[></p><]-->
+<!--{% endfor %}-->
+
+{% if posts.has_prev %}
+    <a href="{{ url_for('index', page=posts.prev_num) }}"><< Newer posts</a>
+{% else %}
+    << Newer posts
+{% endif %} | 
+
+{% if posts.has_next %}
+    <a href="{{ url_for('index', page=posts.next_num) }}">Older posts >></a>
+    {% else %}
+    Older posts >>
+{% endif %}
 {% endblock %}
