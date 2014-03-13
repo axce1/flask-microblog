@@ -9,6 +9,8 @@ sqlalchemy-migrate
 flask-wtf
 pytz
 flask-babel
+flask-script
+flask-migrate
 
 #flup dont work with py3
 # use https://github.com/Pyha/flup-py3.3

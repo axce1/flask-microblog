@@ -24,15 +24,8 @@
 </form>
 
 {% for post in posts.items %}
-    {{ post.body}}
-{% endfor%}
-
-<!--{% for post in posts.items %}-->
-    <!--{% include 'post.html' %}-->
-   <!--[> <p><]-->
-        <!--[>{{post.author.nickname}} says: <b>{{post.body}}</b><]-->
-    <!--[></p><]-->
-<!--{% endfor %}-->
+    {% include 'post.html' %}
+{% endfor %}
 
 {% if posts.has_prev %}
     <a href="{{ url_for('index', page=posts.prev_num) }}"><< Newer posts</a>

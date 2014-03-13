@@ -10,7 +10,7 @@ from .models import User, Post, ROLE_USER, ROLE_ADMIN
 POSTS_PER_PAGE = 3
 
 @app.route('/', methods = ['GET', 'POST'])
-@app.route('/index', methods = ['GET', 'POST'])
+@app.route('/index/<int:page>', methods = ['GET', 'POST'])
 @login_required
 def index(page=1):
     if g.user is not None:
