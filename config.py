@@ -19,6 +19,9 @@ ADMINS = ['admin@example.com']
 # pagination
 #POSTS_PER_PAGE = 3
 
+# full text search
+#WHOOSH_BASE = os.path.join(basedir, 'search.db')
+
 OPENID_PROVIDERS = [
     { 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
     { 'name': 'Yahoo', 'url': 'https://me.yahoo.com' },
