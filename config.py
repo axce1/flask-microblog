@@ -8,10 +8,12 @@ CSRF_ENABLE = True
 SECRET_KEY = 'you-will-never-guess'
 
 #mail server setting
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_SERVER = 'smtp.mail.ru'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'your_name@list.ru'
+MAIL_PASSWORD = 'your_password'
 
 # admin list
 ADMINS = ['admin@example.com']

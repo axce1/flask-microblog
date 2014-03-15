@@ -5,6 +5,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app, db, lm, oid
 from .forms import LoginForm, EditForm, PostForm
 from .models import User, Post, ROLE_USER, ROLE_ADMIN
+from .email import follower_notification
 
 #from config import POSTS_PER_PAGE
 POSTS_PER_PAGE = 3
@@ -163,6 +164,7 @@ def follow(nickname):
     db.session.add(u)
     db.session.commit()
     flash('You are now following ' + nickname + '!')
+    follower_notification(user, g.user)
     return redirect(url_for('user', nickname=nickname))
 
 
@@ -177,8 +179,8 @@ def unfollow(nickname):
         flash('You can\'t unfollow yourself!')
         return redirect(url_for('user', nickname=nickname))
     u = g.user.unfollow(user)
-    if u in None:
-        flash('Cannot unfollw ' + nickname + '.')
+    if u is None:
+        flash('Cannot unfollow ' + nickname + '.')
         return redirect(url_for('user', nickname=nickname))
     db.session.add(u)
     db.session.commit()
