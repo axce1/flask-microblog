@@ -8,6 +8,7 @@ from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from flask.ext.mail import Mail
 
+from .momentjs import momentjs
 from config import basedir
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 
@@ -22,6 +23,8 @@ lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 mail = Mail(app)
+
+app.jinja_env.globals['momentjs'] = momentjs
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
