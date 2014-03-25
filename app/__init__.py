@@ -7,6 +7,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from flask.ext.mail import Mail
+from flask.ext.admin import Admin
 
 from .momentjs import momentjs
 from config import basedir
@@ -16,6 +17,8 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+admin = Admin(app)
+
 
 lm = LoginManager()
 lm.init_app(app)
@@ -51,5 +54,5 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
 
-from app import views, models
+from app import views, models, adminview
 
