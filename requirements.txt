@@ -4,13 +4,14 @@ flask-openid
 flask-mail
 sqlalchemy
 flask-sqlalchemy
-sqlalchemy-migrate
+#sqlalchemy-migrate
 #flask-whooshalchemy
 flask-wtf
 pytz
 flask-babel
 flask-script
 flask-migrate
+flask-admin
 
 #flup dont work with py3
 # use https://github.com/Pyha/flup-py3.3
