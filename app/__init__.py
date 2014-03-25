@@ -17,7 +17,8 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-admin = Admin(app)
+
+#admin = Admin(app, index_view=MyView())
 
 
 lm = LoginManager()
